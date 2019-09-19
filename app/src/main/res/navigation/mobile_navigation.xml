@@ -9,7 +9,7 @@
         android:id="@+id/navigation_headline"
         android:name="com.binhnguyen.newsapp.ui.headline.HeadlineFragment"
         android:label="@string/title_headline"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_headline" />
 
     <fragment
         android:id="@+id/navigation_custom"
