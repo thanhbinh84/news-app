@@ -9,7 +9,23 @@
         android:id="@+id/navigation_headline"
         android:name="com.binhnguyen.newsapp.ui.headline.HeadlineFragment"
         android:label="@string/title_headline"
-        tools:layout="@layout/fragment_headline" />
+        tools:layout="@layout/fragment_headline">
+        <action
+            android:id="@+id/action_showDetail"
+            app:destination="@id/detailFragment"
+        />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.binhnguyen.newsapp.ui.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="selectedNews"
+            app:argType="com.binhnguyen.newsapp.network.News"
+            />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_custom"

@@ -27,6 +27,11 @@ class HeadlineViewModel : ViewModel() {
     val newsList: LiveData<List<News>>
         get() = _newsList
 
+    private val _navigateToSelectedNews = MutableLiveData<News>()
+
+    val navigateToSelectedNews: LiveData<News>
+        get() = _navigateToSelectedNews
+
     init {
         getNews()
     }
@@ -45,6 +50,14 @@ class HeadlineViewModel : ViewModel() {
                 println("Failure: " + e.message)
             }
         }
+    }
+
+    fun displayNewsDetails(news: News) {
+        _navigateToSelectedNews.value = news
+    }
+
+    fun displayNewsDetailsComplete() {
+        _navigateToSelectedNews.value = null
     }
 
     override fun onCleared() {
