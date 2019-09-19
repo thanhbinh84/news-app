@@ -9,15 +9,18 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.*
 
+enum class ApiStatus { LOADING, ERROR, DONE }
 class HeadlineViewModel : ViewModel() {
+
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    private val _status = MutableLiveData<String>()
+    private val _status = MutableLiveData<ApiStatus>()
 
-    val status: LiveData<String>
+    val status: LiveData<ApiStatus>
         get() = _status
 
     private val _newsList = MutableLiveData<List<News>>()
@@ -30,14 +33,16 @@ class HeadlineViewModel : ViewModel() {
 
     private fun getNews() {
         coroutineScope.launch {
-            var getNewsDeferred = NewsApi.retrofitService.getNews()
+            val getNewsDeferred = NewsApi.retrofitService.getNews()
             try {
+                _status.value = ApiStatus.LOADING
                 var result = getNewsDeferred.await()
-                if (result.totalResults > 0) {
-                    _newsList.value = result.articles
-                }
+                _newsList.value = result.articles
+                _status.value = ApiStatus.DONE
             } catch (e: Exception) {
-//                _text.value = "Failure: " + e.message
+                _status.value = ApiStatus.ERROR
+                _newsList.value = ArrayList()
+                println("Failure: " + e.message)
             }
         }
     }
