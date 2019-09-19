@@ -1,10 +1,10 @@
-package com.binhnguyen.newsapp.ui.dashboard
+package com.binhnguyen.newsapp.ui.custom
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class CustomViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"

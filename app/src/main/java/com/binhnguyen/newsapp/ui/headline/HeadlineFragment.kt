@@ -1,4 +1,4 @@
-package com.binhnguyen.newsapp.ui.dashboard
+package com.binhnguyen.newsapp.ui.headline
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.binhnguyen.newsapp.R
 
-class DashboardFragment : Fragment() {
+class HeadlineFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var headlineViewModel: HeadlineViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-            ViewModelProviders.of(this).get(DashboardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(this, Observer {
+        headlineViewModel =
+            ViewModelProviders.of(this).get(HeadlineViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        val textView: TextView = root.findViewById(R.id.text_home)
+        headlineViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root
