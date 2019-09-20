@@ -13,8 +13,8 @@ import com.binhnguyen.newsapp.ui.news.NewsRecyclerAdapter.OnClickListener
 
 class NewsFragment : Fragment() {
 
-    private val viewModel: HeadlineViewModel by lazy {
-        ViewModelProviders.of(this).get(HeadlineViewModel::class.java)
+    private val viewModel: NewsViewModel by lazy {
+        ViewModelProviders.of(this).get(NewsViewModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

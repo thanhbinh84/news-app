@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 enum class ApiStatus { LOADING, ERROR, DONE }
-class HeadlineViewModel : ViewModel() {
+class NewsViewModel : ViewModel() {
 
 
     private var viewModelJob = Job()
