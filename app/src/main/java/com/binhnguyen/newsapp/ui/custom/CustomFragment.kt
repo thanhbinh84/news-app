@@ -1,31 +1,37 @@
 package com.binhnguyen.newsapp.ui.custom
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.lifecycle.ViewModelProviders
 import com.binhnguyen.newsapp.R
+import com.binhnguyen.newsapp.network.ApiFilter
+import com.binhnguyen.newsapp.ui.news.NewsFragment
 
-class CustomFragment : Fragment() {
+class CustomFragment : NewsFragment() {
 
-    private lateinit var customViewModel: CustomViewModel
+    override fun initViewModel() {
+        viewModel = ViewModelProviders.of(this).get(CustomViewModel::class.java)
+    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        customViewModel =
-            ViewModelProviders.of(this).get(CustomViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        customViewModel.text.observe(this, Observer {
-            textView.text = it
-        })
-        return root
+    override fun enableFilter() {
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.overflow_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        (viewModel as CustomViewModel).updateFilter(
+            when (item.itemId) {
+                R.id.bitcoin_menu -> ApiFilter.BITCOIN
+                R.id.apple_menu -> ApiFilter.APPLE
+                R.id.earthquake_menu -> ApiFilter.EARTHQUAKE
+                else -> ApiFilter.ANIMAL
+            }
+        )
+        return true
     }
 }

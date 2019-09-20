@@ -1,18 +1,17 @@
 package com.binhnguyen.newsapp.ui.news
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.binhnguyen.newsapp.network.News
 import com.binhnguyen.newsapp.network.NewsApi
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import com.binhnguyen.newsapp.network.NewsSources
+import kotlinx.coroutines.*
 import java.util.*
 
 enum class ApiStatus { LOADING, ERROR, DONE }
-class NewsViewModel : ViewModel() {
+open class NewsViewModel(app: Application) : AndroidViewModel(app) {
 
 
     private var viewModelJob = Job()
@@ -36,9 +35,9 @@ class NewsViewModel : ViewModel() {
         getNews()
     }
 
-    private fun getNews() {
+    protected fun getNews() {
         coroutineScope.launch {
-            val getNewsDeferred = NewsApi.retrofitService.getNews()
+            val getNewsDeferred = getNewsDeferred()
             try {
                 _status.value = ApiStatus.LOADING
                 var result = getNewsDeferred.await()
@@ -50,6 +49,10 @@ class NewsViewModel : ViewModel() {
                 println("Failure: " + e.message)
             }
         }
+    }
+
+    open fun getNewsDeferred() :Deferred<NewsSources> {
+        return NewsApi.retrofitService.getNews()
     }
 
     fun displayNewsDetails(news: News) {

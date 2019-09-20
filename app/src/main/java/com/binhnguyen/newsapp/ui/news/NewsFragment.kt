@@ -11,16 +11,16 @@ import androidx.navigation.fragment.findNavController
 import com.binhnguyen.newsapp.databinding.FragmentNewsBinding
 import com.binhnguyen.newsapp.ui.news.NewsRecyclerAdapter.OnClickListener
 
-class NewsFragment : Fragment() {
+open class NewsFragment : Fragment() {
 
-    private val viewModel: NewsViewModel by lazy {
-        ViewModelProviders.of(this).get(NewsViewModel::class.java)
-    }
+    protected lateinit var viewModel: NewsViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         val binding = FragmentNewsBinding.inflate(inflater)
         binding.setLifecycleOwner(this)
+        initViewModel()
+        enableFilter()
         binding.viewModel = viewModel
         binding.newsList.adapter = NewsRecyclerAdapter(OnClickListener {
             viewModel.displayNewsDetails(it)
@@ -33,5 +33,11 @@ class NewsFragment : Fragment() {
             }
         })
         return binding.root
+    }
+
+    protected open fun enableFilter() {}
+
+    protected open fun initViewModel() {
+        viewModel = ViewModelProviders.of(this).get(NewsViewModel::class.java)
     }
 }

@@ -3,4 +3,8 @@
     <string name="title_headline">Headline</string>
     <string name="title_custom">Custom</string>
     <string name="title_profile">Profile</string>
+    <string name="animal">Animal</string>
+    <string name="earthquake">Earthquake</string>
+    <string name="apple">Apple</string>
+    <string name="bitcoin">Bitcoin</string>
 </resources>

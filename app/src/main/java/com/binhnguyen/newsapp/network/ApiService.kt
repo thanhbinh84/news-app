@@ -9,8 +9,13 @@ import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 private const val BASE_URL = "https://newsapi.org/v2/"
+
+enum class ApiFilter(val value: String) {
+    BITCOIN("bitcoin"), APPLE("apple"),
+    EARTHQUAKE("earthquake"), ANIMAL("animal") }
 
 object NULL_TO_EMPTY_STRING_ADAPTER {
     @FromJson
@@ -37,6 +42,10 @@ private val retrofit = Retrofit.Builder()
 interface NewsApiService {
     @GET("top-headlines?country=us&apiKey=a3d75c634cb7476887e2d5a48c6d6cd6")
     fun getNews():
+            Deferred<NewsSources>
+
+    @GET("everything?apiKey=a3d75c634cb7476887e2d5a48c6d6cd6")
+    fun getCustomNews(@Query("q") type: String):
             Deferred<NewsSources>
 }
 

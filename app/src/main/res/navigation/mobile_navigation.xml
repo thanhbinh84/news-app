@@ -31,7 +31,7 @@
         android:id="@+id/navigation_custom"
         android:name="com.binhnguyen.newsapp.ui.custom.CustomFragment"
         android:label="@string/title_custom"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_news" />
 
     <fragment
         android:id="@+id/navigation_profile"
