@@ -12,8 +12,7 @@
         tools:layout="@layout/fragment_news">
         <action
             android:id="@+id/action_showDetail"
-            app:destination="@id/detailFragment"
-        />
+            app:destination="@id/detailFragment" />
     </fragment>
 
     <fragment
@@ -23,19 +22,22 @@
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="selectedNews"
-            app:argType="com.binhnguyen.newsapp.network.News"
-            />
+            app:argType="com.binhnguyen.newsapp.network.News" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_custom"
         android:name="com.binhnguyen.newsapp.ui.custom.CustomFragment"
         android:label="@string/title_custom"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news">
+        <action
+            android:id="@+id/action_showDetail"
+            app:destination="@id/detailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.binhnguyen.newsapp.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_profile" />
 </navigation>

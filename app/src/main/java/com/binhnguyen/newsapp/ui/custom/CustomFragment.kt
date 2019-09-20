@@ -3,6 +3,8 @@ package com.binhnguyen.newsapp.ui.custom
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.binhnguyen.newsapp.R
 import com.binhnguyen.newsapp.network.ApiFilter
@@ -16,6 +18,14 @@ class CustomFragment : NewsFragment() {
 
     override fun enableFilter() {
         setHasOptionsMenu(true)
+        (viewModel as CustomViewModel).keyword.observe(this, Observer {
+            (activity as AppCompatActivity).supportActionBar?.setTitle(
+                getString(
+                    R.string.custom_news,
+                    it
+                )
+            )
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

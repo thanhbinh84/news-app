@@ -7,4 +7,9 @@
     <string name="earthquake">Earthquake</string>
     <string name="apple">Apple</string>
     <string name="bitcoin">Bitcoin</string>
+    <string name="custom_news">News - %1$s</string>
+    <string name="hint_text">Username</string>
+    <string name="register">Register</string>
+    <string name="hello_welcome">Hello, welcome</string>
+    <string name="invalid">Invalid</string>
 </resources>
