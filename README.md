@@ -1,5 +1,5 @@
 # news-app
-The app uses Kotlin following recommended MVVM architecture by Google at https://developer.android.com/jetpack/docs/guide
+The app uses Kotlin following recommended MVVM architecture by Google at https://developer.android.com/jetpack/docs/guide#recommended-app-arch
 
 ## Steps to run:
 1. Generate api key from https://newsapi.org/
