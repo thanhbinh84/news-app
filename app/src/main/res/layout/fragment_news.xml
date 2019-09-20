@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.binhnguyen.newsapp.ui.headline.HeadlineViewModel" />
+            type="com.binhnguyen.newsapp.ui.news.HeadlineViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

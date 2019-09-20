@@ -1,4 +1,4 @@
-package com.binhnguyen.newsapp.ui.headline
+package com.binhnguyen.newsapp.ui.news
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package com.binhnguyen.newsapp.ui.headline
+package com.binhnguyen.newsapp.ui.news
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

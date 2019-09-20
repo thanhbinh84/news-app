@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_headline"
-        android:name="com.binhnguyen.newsapp.ui.headline.HeadlineFragment"
+        android:name="com.binhnguyen.newsapp.ui.news.NewsFragment"
         android:label="@string/title_headline"
-        tools:layout="@layout/fragment_headline">
+        tools:layout="@layout/fragment_news">
         <action
             android:id="@+id/action_showDetail"
             app:destination="@id/detailFragment"

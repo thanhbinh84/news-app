@@ -7,8 +7,8 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.binhnguyen.newsapp.R
 import com.binhnguyen.newsapp.network.News
-import com.binhnguyen.newsapp.ui.headline.ApiStatus
-import com.binhnguyen.newsapp.ui.headline.NewsRecyclerAdapter
+import com.binhnguyen.newsapp.ui.news.ApiStatus
+import com.binhnguyen.newsapp.ui.news.NewsRecyclerAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
