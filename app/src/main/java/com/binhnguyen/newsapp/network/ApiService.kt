@@ -12,6 +12,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 private const val BASE_URL = "https://newsapi.org/v2/"
+private const val API_KEY = ""
 
 enum class ApiFilter(val value: String) {
     BITCOIN("bitcoin"), APPLE("apple"),
@@ -40,11 +41,11 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface NewsApiService {
-    @GET("top-headlines?country=us&apiKey=a3d75c634cb7476887e2d5a48c6d6cd6")
+    @GET("top-headlines?country=us&apiKey=" + API_KEY)
     fun getNews():
             Deferred<NewsSources>
 
-    @GET("everything?apiKey=a3d75c634cb7476887e2d5a48c6d6cd6")
+    @GET("everything?apiKey=" + API_KEY)
     fun getCustomNews(@Query("q") type: String):
             Deferred<NewsSources>
 }
